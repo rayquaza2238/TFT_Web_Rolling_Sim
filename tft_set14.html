@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Shop</title>
+    <link rel="stylesheet" href="gameboard.css"> <!-- Das ist der wichtige Teil -->
+    <link rel="stylesheet" href="teamplaner.css"> <!-- Das ist der wichtige Teil -->
+    <style>
+        #gameUI {
+            text-align: center;
+        }
+
+        #gameField {
+            width: 100%;
+            height: 100%; /* Höhe des Spielfeldes anpassen */
+            background-image: url('niki-wichman-elderwoodtft.jpg'); /* Das Bild als Hintergrund */
+            background-size: cover; /* Bild wird skaliert, um den gesamten Bereich zu füllen */
+            background-position: center; /* Das Bild wird zentriert */
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+  <div id="mainMenu">
+    <h1>Game Shop</h1>
+
+    <label for="levelSlider">Level: <span id="levelValue">1</span></label>
+    <input type="range" id="levelSlider" name="levelSlider" min="1" max="10" value="1" style="width: 300px;">
+    
+    <br><br>
+
+    <label for="goldSlider">Gold: <span id="goldValue">1</span></label>
+    <input type="range" id="goldSlider" name="goldSlider" min="1" max="200" value="1" style="width: 500px;">
+    
+    <br><br>
+    <input type="checkbox" id="activateOption" name="activateOption">
+    <label for="activateOption">Remove Champion out of pool based on Level</label>
+    <br><br>
+    <button id="startGameButton">Start Game</button>
+  </div>
+
+  <div id="gameUI" class="gameUI" style="display: none;">
+    
+    <div class = "background">
+        <button class = "teamplanerbutton" id="openTeamplaner">Teamplaner öffnen</button>
+        <button onclick="document.getElementById('teamplaner').style.display='none'">Schließen</button>
+        <a href="https://paypal.me/duytamvu?country.x=DE&locale.x=de_DE" target="_blank" class="top-left-button">Donate</a>
+    <label class = "donate_text" id = "donate_text">I will constantly update this website and make it more fun. <br>
+        I will also add more features. <br>I am very grateful for any kind of support!</label>
+      <div class="field">
+          <div class="ef"></div>
+          <div class="own_field">
+              <div class="first_row">
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="0"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="1"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="2"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="3"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="4"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="5"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="6"></div>
+                  <div class="empty"></div>
+              </div>
+              <div class="second_row">
+                  <div class="empty"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="7"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="8"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="9"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="10"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="11"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="12"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="13"></div>
+              </div>
+              <div class="first_row">
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="14"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="15"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="16"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="17"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="18"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="19"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="20"></div>
+                  <div class="empty"></div>
+              </div>
+              <div class="second_row">
+                  <div class="empty"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)" data-index="21"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="22"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="23"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="24"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="25"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="26"></div>
+                  <div class="cell" id = "cell_id"  draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="27"></div>
+              </div>
+          </div>
+      </div>
+      <div class = "bank">
+          <div id="bank_slot" class="bank_slot" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="0">
+          </div>
+          <div id="bank_slot" class="bank_slot" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="1">
+          </div>
+          <div id="bank_slot" class="bank_slot" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="2">
+          </div>
+          <div id="bank_slot" class="bank_slot" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="3">
+          </div>
+          <div id="bank_slot" class="bank_slot" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="4">
+          </div>
+          <div id="bank_slot" class="bank_slot" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="5">
+          </div>
+          <div id="bank_slot" class="bank_slot" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="6">
+          </div>
+          <div id="bank_slot" class="bank_slot" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="7">
+          </div>
+          <div id="bank_slot" class="bank_slot" draggable="true" ondragstart="drag(event)" ondrop="drop(event)"  ondragover="allowDrop(event)"  data-index="8">
+          </div>
+      </div>
+      <div class="shop_info">
+          <div class="progress-wrapper">
+              <label class="progress-label">Level</label>
+              <div class="progress-bar">
+                  <div class="progress-fill" style="width: 50%;">50%</div>
+                  </div>
+          </div>
+          <button class="level_button" id="buyXPButton">
+              <labe>Buy XP</label>
+              <label>4🟡</label>
+          </button>
+          <button class ="reroll_button" id="rerollButton">
+              <labe>Reroll</label>
+              <label>2🟡</label>
+          </button>
+          
+      </div>
+      <div class="level_info">Level</div>
+      <div class="gold_info">Gold 🟡: <span id="goldAmount">0</span></div>
+      <div id="shop_id" class = "shop" ondrop="drop(event)" ondragover="allowDrop(event)">
+          <div class="shop_slot">
+              <img src="" alt="Bild" class="shop_img">
+              <div class="shop_unit_info">Name and Gold</div>
+          </div>
+          <div class="shop_slot">
+              <img src="" alt="Bild" class="shop_img">
+              <div class="shop_unit_info">Name and Gold</div>
+          </div>
+          <div class="shop_slot">
+              <img src="" alt="Bild" class="shop_img">
+              <div class="shop_unit_info">Name and Gold</div>
+          </div>
+          <div class="shop_slot">
+              <img src="" alt="Bild" class="shop_img">
+              <div class="shop_unit_info">Name and Gold</div>
+          </div>
+          <div class="shop_slot">
+              <img src="" alt="Bild" class="shop_img">
+              <div class="shop_unit_info">Name and Gold</div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<div id = "teamplaner"  style="display: none;">
+    <button id = "close_button" class = "close_button">Close</button>
+    <div class = grid>
+        <div class = "all_champs_list">
+                <div class = "cost_info">
+                    <div class= "cost_text" >1 Cost</div>
+                    <div class="cost_table">
+                    </div>
+                </div>
+                <div class = "cost_info">
+                    <div class= "cost_text" >2 Cost</div>
+                    <div class="cost_table">
+                    </div>
+                </div>
+                <div class = "cost_info">
+                    <div class= "cost_text" >3 Cost</div>
+                    <div class="cost_table">
+                </div>
+                </div>
+                <div class = "cost_info">
+                    <div class= "cost_text" >4 Cost</div>
+                    <div class="cost_table">
+                    </div>
+                </div>
+                <div class = "cost_info">
+                    <div class= "cost_text" >5 Cost</div>
+                    <div class="cost_table">
+                    </div>
+                </div>
+        
+        </div>
+        <div class = "planer">
+            <div class = "teamplaner_slots" ></div>
+            <div class = "teamplaner_slots" ></div>
+            <div class = "teamplaner_slots" ></div>
+            <div class = "teamplaner_slots" ></div>
+            <div class = "teamplaner_slots" ></div>
+            <div class = "teamplaner_slots" ></div>
+            <div class = "teamplaner_slots" ></div>
+            <div class = "teamplaner_slots" ></div>
+            <div class = "teamplaner_slots" ></div>
+            <div class = "teamplaner_slots" ></div>
+        </div>
+    </div>
+</div>
+
+    <!-- Deine Skripte -->
+    <audio id="buy_sound" src="sounds/buy.wav" preload="auto"></audio>
+    <audio id="reroll_sound" src="sounds/reroll.wav" preload="auto"></audio>
+    <audio id="bg_sound" src="sounds/background.wav" preload="auto" loop></audio>
+    <script src="champion.js"></script> <!-- shop.js danach -->
+    <script src="game.js"></script> <!-- game.js zuerst -->
+    <script src="shop.js"></script> <!-- shop.js danach -->
+    <script src="bank.js"></script> <!-- shop.js danach -->
+    <script src="field.js"></script> <!-- shop.js danach -->
+    <script src="dragdrop.js"></script>
+    <script src="teamplaner.js"></script>
+    <script src="main.js"></script> <!-- main.js zum Ausführen der Logik -->
+    
+</body>
+</html>
