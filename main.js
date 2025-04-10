@@ -229,9 +229,10 @@ function updateField() {
                 // Falls noch kein Bild existiert, erstellen
                 const newImg = document.createElement('img');
                 newImg.classList.add('field_img');
-                newImg.style.width = "100px";
-                newImg.style.height = "80px";
-                newImg.style.objectFit = 'contain';
+                newImg.style.width = "4vw";
+                newImg.style.height = "5vh";
+                newImg.style.objectFit = 'cover';
+                newImg.style.objectPosition = 'center';
                 newImg.draggable = "true";
                 newImg.ondragstart = "drag(event)"; // Dragstart Ereignis
                 newImg.id = `field_img_${index}`; // Setze eine dynamische ID basierend auf dem Index
